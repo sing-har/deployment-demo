@@ -51,4 +51,16 @@ public class DeploymentController {
 
         return ResponseEntity.ok(response);
     }
+
+
+    @GetMapping("/welcome")
+    public ResponseEntity<Map<String, String>> welcome() {
+
+        return ResponseEntity.ok(
+                Map.of(
+                        "message", "Welcome to the deployment demo application",
+                        "status", "running"
+                )
+        );
+    }
 }

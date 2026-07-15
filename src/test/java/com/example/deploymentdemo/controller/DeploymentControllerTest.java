@@ -62,4 +62,22 @@ class DeploymentControllerTest {
                 response.getBody().environment()
         );
     }
+
+    @Test
+    void shouldReturnWelcomeMessage() {
+
+        ResponseEntity<Map<String, String>> response =
+                deploymentController.welcome();
+
+        assertEquals(200, response.getStatusCode().value());
+        assertNotNull(response.getBody());
+        assertEquals(
+                "Welcome to the deployment demo application",
+                response.getBody().get("message")
+        );
+        assertEquals(
+                "running",
+                response.getBody().get("status")
+        );
+    }
 }
